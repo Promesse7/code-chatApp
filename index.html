@@ -47,6 +47,34 @@ function validateEmail(email) {
 
   return '';
 }
+
+
+function handleSignupFormSubmit(e) {
+  // prevent default browser behaviour
+  e.preventDefault();
+
+  const formDataEntries = new FormData(signupForm).entries();
+  const { email, password } = Object.fromEntries(formDataEntries);
+
+  const emailErrorMessage = validateEmail(email);
+  const passowrdErrorMessage = validatePassword(password);
+
+  if (!emailErrorMessage) {
+		// select the email form field message element
+    const emailErrorMessageElement = document.querySelector('.email .dkh-form-field__messages');
+    // show email error message to user
+    emailErrorMessageElement.innerText = emailErrorMessage;
+  }
+
+  if (passowrdErrorMessage) {
+		// select the email form field message element
+    const passwordErrorMessageElement = document.querySelector('.password .dkh-form-field__messages');
+    // show password error message to user
+    passwordErrorMessageElement.innerText = passowrdErrorMessage;
+  }
+}
+
+
   </script>
     <form id="dkh-signup-form">
         <div class="dkh-form-header">
@@ -54,9 +82,11 @@ function validateEmail(email) {
             <small>Sign up with</small>
             <div class="dkh-form-header__social-wrapper">
               <button type="button" class="dkh-btn dkh-btn-icon dkh-btn-github">
+                <i class="fab fa-github fa-lg"></i>
                 Github
               </button>
               <button type="button" class="dkh-btn dkh-btn-icon dkh-btn-twitter">
+                <i class="fab fa-twitter fa-lg"></i>
                 Twitter
               </button>
             </div>
@@ -66,13 +96,13 @@ function validateEmail(email) {
           <small>Or sign in with email and password</small>
           <div class="dkh-form-field">
             <fieldset>
-              <input autofocus class="dkh-form-field__input" name="email" type="email" id="email" required placeholder="Email">
+              <input autofocus class="dkh-form-field__input" type="text" name="email" id="email" required placeholder="Email">
             </fieldset>
             <div class="dkh-form-field__messages"></div>
           </div>
           <div class="dkh-form-field">
             <fieldset>
-              <input class="dkh-form-field__input" name="password" type="password" id="password" required minlength="10" placeholder="Password">
+              <input class="dkh-form-field__input" name="password" type="password" id="password" required placeholder="Password">
             </fieldset>
             <div class="dkh-form-field__messages"></div>
           </div>
