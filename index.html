@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - R&P Poetry</title>
 </head>
 <body>
+  <script>
+    function handleSignupFormSubmit(e) {
+  // prevent default browser behaviour
+  e.preventDefault();
+
+  const formDataEntries = new FormData(signupForm).entries();
+  const { email, password } = Object.fromEntries(formDataEntries);
+
+  // submit email and password to an API
+}
+  </script>
     <form id="dkh-signup-form">
         <div class="dkh-form-header">
           <div>
@@ -39,5 +50,6 @@
           <button class="dkh-btn dkh-btn-primary" type="submit">Sign Up</button>
         </div>
       </form>
+
 </body>
 </html>
