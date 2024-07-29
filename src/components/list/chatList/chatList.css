@@ -1,0 +1,100 @@
+.chatList{
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    
+
+
+    .search{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .searchbar{
+        flex: 1;
+        background-color:rgba(17, 25, 40,0.75);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-radius: 10px;
+        padding: 5px;
+
+        input{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            flex: 1;
+        }
+
+        img{
+            height: 20px;
+            width: 20px;
+            filter: invert(100%) brightness(1) saturate(100%);
+        }
+
+        
+    }
+    .add{
+            width: 30px;
+            height: 30px;
+            background-color:rgba(238, 230, 215, 0.75);
+            filter: invert(100%) brightness(1) saturate(100%);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .item{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            padding: 15px;
+            border-bottom: 1px solid #dddddd35;
+
+
+            img{
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            texts{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                span{
+            font-weight: 500;
+                }
+            }
+        }
+}
+
+
+
+
+    /*---------scroll bar---------*/
+
+    /* Customizing the scrollbar */
+
+    ::-webkit-scrollbar {
+        width: 8px; 
+      }
+      ::-webkit-scrollbar-track {
+       background: #88888800; 
+      }
+      ::-webkit-scrollbar-thumb {
+         background: rgb(17, 21, 32); 
+         border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #313131; 
+      }
+
+
+      
