@@ -3,7 +3,6 @@ import phone from "./images/phone.png";
 import info from "./images/info.png";
 import video from "./images/video.png";
 import emoji from "./images/happy.png";
-import send from "./images/send.png";
 import mic from "./images/mic.png";
 import camera from "./images/camera.png";
 import dorcas from "./images/d.jpg";
