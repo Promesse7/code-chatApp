@@ -6,17 +6,18 @@ import {
     arrayUnion,
     collection,
     doc,
+    getDoc,
     getDocs,
     query,
     serverTimestamp,
     setDoc,
     updateDoc,
     where,
-    writeBatch
+    writeBatch,
 } from "firebase/firestore";
 import React, { useState } from "react";
 
-const AddUser = () => {
+const AddUser = ({ onAddChat }) => {
     const [user, setUser] = useState(null);
     const { currentUser } = useUserStore();
 
@@ -45,7 +46,7 @@ const AddUser = () => {
         if (!user) return;
 
         const chatRef = collection(db, "chats");
-        const userChatsRef = collection(db, "userchats");
+        const userChatsRef = collection(db, "userChats");
         const batch = writeBatch(db);
 
         try {
@@ -59,37 +60,59 @@ const AddUser = () => {
                 chatId: newChatRef.id,
                 lastMessage: "",
                 receiverId: currentUser.id,
+                updatedAt: new Date(), // Placeholder date
             };
 
             const currentUserChatData = {
                 chatId: newChatRef.id,
                 lastMessage: "",
                 receiverId: user.id,
+                updatedAt: new Date(), // Placeholder date
             };
 
-            batch.update(doc(userChatsRef, user.id), {
+            // Ensure the user document exists before updating
+            const userDocRef = doc(userChatsRef, user.id);
+            const userDoc = await getDoc(userDocRef);
+            if (!userDoc.exists()) {
+                await setDoc(userDocRef, { chats: [] });
+            }
+
+            // Ensure the currentUser document exists before updating
+            const currentUserDocRef = doc(userChatsRef, currentUser.id);
+            const currentUserDoc = await getDoc(currentUserDocRef);
+            if (!currentUserDoc.exists()) {
+                await setDoc(currentUserDocRef, { chats: [] });
+            }
+
+            batch.update(userDocRef, {
                 chats: arrayUnion(userChatData),
             });
-            batch.update(doc(userChatsRef, currentUser.id), {
+            batch.update(currentUserDocRef, {
                 chats: arrayUnion(currentUserChatData),
             });
 
             await batch.commit();
 
-            // Now update the timestamps separately
-            await updateDoc(doc(userChatsRef, user.id), {
+            // Update the timestamps separately
+            await updateDoc(userDocRef, {
                 "chats.$[element].updatedAt": serverTimestamp(),
             }, {
                 arrayFilters: [{ "element.chatId": newChatRef.id }],
             });
 
-            await updateDoc(doc(userChatsRef, currentUser.id), {
+            await updateDoc(currentUserDocRef, {
                 "chats.$[element].updatedAt": serverTimestamp(),
             }, {
                 arrayFilters: [{ "element.chatId": newChatRef.id }],
             });
 
-            console.log(newChatRef.id);
+            // Pass the new chat data back to ChatList
+            onAddChat({
+                ...currentUserChatData,
+                user,
+            });
+
+            setUser(null); // Clear the search result after adding
         } catch (err) {
             console.log(err);
         }

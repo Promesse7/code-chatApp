@@ -3,23 +3,28 @@ import phone from "./images/phone.png";
 import info from "./images/info.png";
 import video from "./images/video.png";
 import emoji from "./images/happy.png";
-import send from "./images/send.png";
 import mic from "./images/mic.png";
 import camera from "./images/camera.png";
-import dorcas from "./images/d.jpg";
 import image from "./images/image.png";
+import profile from "./images/placeholder.png";
 import EmojiPicker from "emoji-picker-react";
 import { useEffect, useRef, useState } from "react";
 import { arrayUnion, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { useChatStore } from "../lib/chatStore ";
+import Upload from "../lib/upload";
 
 const Chat = () => {
     const [chat, setChat] = useState(null);
     const [open, setOpen] = useState(false);
     const [text, setText] = useState("");
+    const [img, setImg] = useState({
+        file: null,
+        url: ""
+    });
 
-    const { currentUser, chatId, user } = useChatStore();
+    const { currentUser } = useChatStore();
+    const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } = useChatStore();
     const endRef = useRef(null);
 
     useEffect(() => {
@@ -43,55 +48,139 @@ const Chat = () => {
         setOpen(false);
     };
 
-    const handleSend = async () => {
-        if (!text) return;
-        if (!currentUser || !user) {
-            console.error("Current user or chat user is not defined");
-            return;
-        }
-
-        try {
-            await updateDoc(doc(db, "chats", chatId), {
-                messages: arrayUnion({
-                    senderId: currentUser.id,
-                    text,
-                    createdAt: new Date(),
-                }),
+    const handleImg = async (e) => {
+        if (e.target.files[0]) {
+            const selectedFile = e.target.files[0];
+            setImg({
+                file: selectedFile,
+                url: URL.createObjectURL(selectedFile)
             });
 
-            const userIds = [currentUser.id, user.id];
+            try {
+                const imgUrl = await Upload(selectedFile);
 
-            userIds.forEach(async (id) => {
-                const userChatRef = doc(db, "userChats", id);
-                const userSnapShot = await getDoc(userChatRef);
+                await updateDoc(doc(db, "chats", chatId), {
+                    messages: arrayUnion({
+                        senderId: currentUser?.id || "",
+                        createdAt: new Date(),
+                        isSeen: false,
+                        img: imgUrl,
+                        text: text.trim() // Include any text that might be in the input
+                    })
+                });
 
-                if (userSnapShot.exists()) {
-                    const userChatsData = userSnapShot.data();
-                    const chatIndex = userChatsData.chats.findIndex((c) => c.chatId === chatId);
+                const userIds = [currentUser?.id, user?.id];
 
-                    userChatsData.chats[chatIndex].lastMessage = text;
-                    userChatsData.chats[chatIndex].isSeen = id === currentUser.id;
-                    userChatsData.chats[chatIndex].updateAt = Date.now();
+                userIds.forEach(async (id) => {
+                    if (id) {
+                        const userChatRef = doc(db, "userChats", id);
+                        const userSnapShot = await getDoc(userChatRef);
 
-                    await updateDoc(userChatRef, {
-                        chats: userChatsData.chats,
-                    });
-                }
+                        if (userSnapShot.exists()) {
+                            const userChatsData = userSnapShot.data();
+
+                            const chatIndex = userChatsData.chats.findIndex(c => c.chatId === chatId);
+
+                            userChatsData.chats[chatIndex].lastMessage = text.trim() || "Image";
+                            userChatsData.chats[chatIndex].isSeen = id === currentUser?.id ? true : false;
+                            userChatsData.chats[chatIndex].updateAt = Date.now();
+
+                            await updateDoc(userChatRef, {
+                                chats: userChatsData.chats,
+                            });
+                        }
+                    }
+                });
+
+                setText(""); // Clear the text input after sending
+            } catch (err) {
+                console.log(err);
+            }
+
+            setImg({
+                file: null,
+                url: ""
             });
-
-            setText("");  // Clear the input field after sending the message
-        } catch (err) {
-            console.log("Error sending message:", err);
         }
     };
+
+    const handleSend = async () => {
+        if (text.trim() === "" && !img.file) return; // Ensure either text or image is present
+
+        try {
+            const messageData = {
+                senderId: currentUser?.id || "",
+                createdAt: new Date(),
+                isSeen: false,
+            };
+
+            if (text.trim() !== "") {
+                messageData.text = text.trim();
+            }
+
+            if (img.file) {
+                const imgUrl = await Upload(img.file);
+                messageData.img = imgUrl;
+            }
+
+            await updateDoc(doc(db, "chats", chatId), {
+                messages: arrayUnion(messageData)
+            });
+
+            const userIds = [currentUser?.id, user?.id];
+
+            userIds.forEach(async (id) => {
+                if (id) {
+                    const userChatRef = doc(db, "userChats", id);
+                    const userSnapShot = await getDoc(userChatRef);
+
+                    if (userSnapShot.exists()) {
+                        const userChatsData = userSnapShot.data();
+
+                        const chatIndex = userChatsData.chats.findIndex(c => c.chatId === chatId);
+
+                        userChatsData.chats[chatIndex].lastMessage = text.trim() || "Image";
+                        userChatsData.chats[chatIndex].isSeen = id === currentUser?.id ? true : false;
+                        userChatsData.chats[chatIndex].updateAt = Date.now();
+
+                        await updateDoc(userChatRef, {
+                            chats: userChatsData.chats,
+                        });
+                    }
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+
+        setText("");
+        setImg({ file: null, url: "" });
+    };
+
+    useEffect(() => {
+        const markMessagesAsSeen = async () => {
+            if (chatId && chat) {
+                const messages = chat.messages.map(message => {
+                    if (message.senderId !== currentUser?.id && !message.isSeen) {
+                        return { ...message, isSeen: true };
+                    }
+                    return message;
+                });
+
+                await updateDoc(doc(db, "chats", chatId), { messages });
+            }
+        };
+
+        markMessagesAsSeen();
+    }, [chatId, chat, currentUser?.id]);
 
     return (
         <div className="chat">
             <div className="top">
                 <div className="user">
-                    <img src={dorcas} alt="" />
+                    <img src={user?.avatar || profile} alt="" />
                     <div className="texts">
-                        <span>Neza Dorcas</span>
+                        <span>{user?.username}</span>
                         <p>Love is one step at hand!</p>
                     </div>
                 </div>
@@ -103,10 +192,11 @@ const Chat = () => {
             </div>
             <div className="center">
                 {chat?.messages?.map((message) => (
-                    <div className="message own" key={message?.createdAt}>
+                    <div className={`message ${message.senderId === currentUser?.id ? 'own' : ''}`} key={message.createdAt}>
                         <div className="texts">
                             {message.img && <img src={message.img} alt="" />}
-                            <p>{message.text}</p>
+                            {message.text && <p>{message.text}</p>}
+                            {message.isSeen && <span>Seen</span>}
                         </div>
                     </div>
                 ))}
@@ -114,11 +204,25 @@ const Chat = () => {
             </div>
             <div className="bottom">
                 <div className="icons">
-                    <img src={image} alt="" />
+                    <label htmlFor="file">
+                        <img src={image} alt="" />
+                    </label>
+                    <input type="file" style={{ display: "none" }} onChange={handleImg} id="file" />
                     <img src={camera} alt="" />
                     <img src={mic} alt="" />
                 </div>
-                <input type="text" placeholder="Type your message here!" value={text} onChange={(e) => setText(e.target.value)} />
+                <input 
+                    type="text" 
+                    placeholder={(isCurrentUserBlocked || isReceiverBlocked) ? "You are not allowed to send messages" : "Type your message here!"} 
+                    value={text} 
+                    onChange={(e) => setText(e.target.value)}
+                    disabled={isCurrentUserBlocked || isReceiverBlocked}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            handleSend();
+                        }
+                    }}
+                />
                 <div className="emoji">
                     <img src={emoji} alt="" onClick={() => setOpen((prev) => !prev)} />
                     {open && (
@@ -127,7 +231,7 @@ const Chat = () => {
                         </div>
                     )}
                 </div>
-                <button className="sendButton" onClick={handleSend}>
+                <button className="sendButton" onClick={handleSend} disabled={isCurrentUserBlocked || isReceiverBlocked}>
                     Send
                 </button>
             </div>

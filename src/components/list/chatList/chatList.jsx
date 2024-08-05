@@ -4,27 +4,31 @@ import search from "./search.png";
 import plus from "./plus.png";
 import minus from "./minus.png";
 import AddUser from "./addUser/addUser";
-import pacy from "./images/pacy.jpg";
+import profile from "./images/placeholder.png";
 import { useUserStore } from "../../lib/userStore";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore ";
 
 const ChatList = () => {
     const [chats, setChats] = useState([]);
     const [addMode, setAddMode] = useState(false);
+    const [input, setInput] = useState("");
 
-    const { currentUser } = useUserStore(); 
-    const { changeChat } = useChatStore(); 
+    const { currentUser } = useUserStore();
+    const { changeChat } = useChatStore();
 
     useEffect(() => {
-        if (!currentUser || !currentUser.id) return; 
+        if (!currentUser || !currentUser.id) return;
 
-            const unSub = onSnapshot(doc(db, "userchats", currentUser.id), async (res) => {
-            const items = res.data().chats || [];
+        const unSub = onSnapshot(doc(db, "userChats", currentUser.id), async (res) => {
+            const data = res.data();
+            if (!data || !data.chats) return;
+
+            const items = data.chats;
 
             const promises = items.map(async (item) => {
-                const userDocRef = doc(db, "users", item.receiverId); // Remove quotes around item.receiverId
+                const userDocRef = doc(db, "users", item.receiverId);
                 const userDocSnap = await getDoc(userDocRef);
                 const user = userDocSnap.data();
 
@@ -39,20 +43,45 @@ const ChatList = () => {
         return () => {
             unSub();
         };
-    }, [currentUser]); 
+    }, [currentUser]);
 
-    const handleSelect = async (chat) =>{
+    const handleSelect = async (chat) => {
+        const chatIndex = chats.findIndex((item) => item.chatId === chat.chatId);
 
-        changeChat(chat.chatId, chat.user);
+        if (chatIndex !== -1) {
+            chats[chatIndex].isSeen = true;
+            setChats([...chats]);
 
-    }
+            await updateDoc(doc(db, "userChats", currentUser.id), {
+                chats: chats.map((item) =>
+                    item.chatId === chat.chatId ? { ...item, isSeen: true } : item
+                ),
+            });
+
+            changeChat(chat.chatId, chat.user);
+        }
+    };
+
+    const handleAddChat = (newChat) => {
+        setChats((prevChats) => [...prevChats, newChat]);
+    };
+
+    const filteredChats = chats.filter(chat => 
+        chat.user && chat.user.username && 
+        chat.user.username.toLowerCase().includes(input.toLowerCase())
+    );
 
     return (
         <div className="chatList">
             <div className="search">
                 <div className="searchbar">
                     <img src={search} alt="Search" />
-                    <input type="text" placeholder="Search" />
+                    <input 
+                        type="text" 
+                        placeholder="Search" 
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                    />
                 </div>
                 <img
                     src={addMode ? minus : plus}
@@ -61,21 +90,23 @@ const ChatList = () => {
                     onClick={() => setAddMode((prev) => !prev)}
                 />
             </div>
-            {chats.map((chat) => (
-                <div className="item" key={chat.chatId} onClick={()=>handleSelect(chat)}>
-                    <img src={chat.user.avatar || pacy} alt="User" />
+            {filteredChats.map((chat) => (
+                <div
+                    className="item"
+                    key={chat.chatId}
+                    onClick={() => handleSelect(chat)}
+                    style={{ background: chat.isSeen ? "transparent" : "#5183fe" }}
+                >
+                    <img src={chat.user?.avatar || profile} alt="User" />
                     <div className="texts">
-                        <span>{chat.user.username || 'Unknown User'}</span> {/* Handle undefined user */}
+                        <span>{chat.user?.username || 'Unknown User'}</span>
                         <p>{chat.lastMessage}</p>
                     </div>
                 </div>
             ))}
-            {addMode && <AddUser />}
+            {addMode && <AddUser onAddChat={handleAddChat} />}
         </div>
     );
 };
 
 export default ChatList;
-
-
-
