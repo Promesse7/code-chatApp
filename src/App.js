@@ -9,6 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './components/lib/firebase';
 import { useUserStore } from './components/lib/userStore';
 import { useChatStore } from './components/lib/chatStore ';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +45,7 @@ function App() {
         <Login />
       )}
       <Notification />
+      <Analytics />
     </div>
   );
 }
