@@ -9,7 +9,7 @@ import { auth, db } from "../lib/firebase.js";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useChatStore } from "../lib/chatStore .js";
 
-const Login = () => {
+const Login = ({ onLoginSuccess }) => {
     const [avatar, setAvatar] = useState({ file: null, url: "" });
     const [loading, setLoading] = useState(false);
     const { setCurrentUser, initializeAuth } = useChatStore();
@@ -38,6 +38,7 @@ const Login = () => {
             const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
             if (userDoc.exists()) {
                 setCurrentUser(userDoc.data());
+                onLoginSuccess(); // Call this when login is successful
             }
         } catch (err) {
             console.log(err);
@@ -83,6 +84,7 @@ const Login = () => {
 
             setCurrentUser(userData);
             toast.success("Account created! You are now logged in.");
+            onLoginSuccess(); // Call this when registration is successful
         } catch (err) {
             console.log(err);
             toast.error(err.message);

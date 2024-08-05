@@ -5,10 +5,7 @@
   box-sizing: border-box;
 }
 body{
-  background-image: url(./images/images.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-origin: border-box;
+ background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,11 +15,12 @@ body{
 .container{
   height: 90vh;
   width: 90vw;
-  background-color: rgba(17, 25, 40,0.75);
+  background-color: rgb(133, 48, 36);
   border-radius: 12px;
   backdrop-filter: blur(18px), saturate(180%);
-  border: 1px solid rgba(255, 255, 255,0.125);
+  border: none;
   display: flex;
+  box-shadow: 5px 10px 10px 10px gray;
 }
 
 .loading{

@@ -3,6 +3,7 @@ import List from './components/list/list';
 import Chat from './components/chat/chat';
 import Detail from './components/details/detail';
 import Login from './components/login/Login';
+import LandingPage from './components/landingPage/LandingPage';
 import Notification from './components/notification/Notification';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -13,6 +14,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [currentView, setCurrentView] = useState('landing');
   const { currentUser, fetchUserInfo } = useUserStore();
   const { chatId, initializeAuth } = useChatStore();
 
@@ -20,6 +22,9 @@ function App() {
     const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
         await fetchUserInfo(user.uid);
+        setCurrentView('main');
+      } else {
+        setCurrentView('landing');
       }
       setIsLoading(false);
     });
@@ -33,17 +38,28 @@ function App() {
 
   if (isLoading) return <div className='loading'>Loading...</div>;
 
+  const renderContent = () => {
+    switch (currentView) {
+      case 'landing':
+        return <LandingPage onGetStarted={() => setCurrentView('login')} />;
+      case 'login':
+        return <Login onLoginSuccess={() => setCurrentView('main')} />;
+      case 'main':
+        return (
+          <>
+            <List />
+            {chatId && <Chat />}
+            {chatId && <Detail />}
+          </>
+        );
+      default:
+        return <div>Error: Unknown view</div>;
+    }
+  };
+
   return (
     <div className="container">
-      {currentUser ? (
-        <>
-          <List />
-          {chatId && <Chat />}
-          {chatId && <Detail />}
-        </>
-      ) : (
-        <Login />
-      )}
+      {renderContent()}
       <Notification />
       <Analytics />
     </div>
