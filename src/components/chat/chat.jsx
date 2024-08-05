@@ -9,7 +9,7 @@ import image from "./images/image.png";
 import profile from "./images/placeholder.png";
 import EmojiPicker from "emoji-picker-react";
 import { useEffect, useRef, useState } from "react";
-import { arrayUnion, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, onSnapshot, updateDoc, writeBatch } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { useChatStore } from "../lib/chatStore ";
 import Upload from "../lib/upload";
@@ -23,8 +23,7 @@ const Chat = () => {
         url: ""
     });
 
-    const { currentUser } = useChatStore();
-    const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } = useChatStore();
+    const { currentUser, chatId, user, isCurrentUserBlocked, isReceiverBlocked } = useChatStore();
     const endRef = useRef(null);
 
     useEffect(() => {
@@ -32,15 +31,21 @@ const Chat = () => {
     }, [chat]);
 
     useEffect(() => {
+        let unSub;
         if (chatId) {
-            const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
-                setChat(res.data());
+            unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
+                const data = res.data();
+                if (data && data.messages) {
+                    // Sort messages by timestamp
+                    data.messages.sort((a, b) => a.createdAt.toMillis() - b.createdAt.toMillis());
+                    setChat(data);
+                }
             });
-
-            return () => {
-                unSub();
-            };
         }
+
+        return () => {
+            if (unSub) unSub();
+        };
     }, [chatId]);
 
     const handleEmoji = (emojiData) => {
@@ -55,59 +60,44 @@ const Chat = () => {
                 file: selectedFile,
                 url: URL.createObjectURL(selectedFile)
             });
-
-            try {
-                const imgUrl = await Upload(selectedFile);
-
-                await updateDoc(doc(db, "chats", chatId), {
-                    messages: arrayUnion({
-                        senderId: currentUser?.id || "",
-                        createdAt: new Date(),
-                        isSeen: false,
-                        img: imgUrl,
-                        text: text.trim() // Include any text that might be in the input
-                    })
-                });
-
-                const userIds = [currentUser?.id, user?.id];
-
-                userIds.forEach(async (id) => {
-                    if (id) {
-                        const userChatRef = doc(db, "userChats", id);
-                        const userSnapShot = await getDoc(userChatRef);
-
-                        if (userSnapShot.exists()) {
-                            const userChatsData = userSnapShot.data();
-
-                            const chatIndex = userChatsData.chats.findIndex(c => c.chatId === chatId);
-
-                            userChatsData.chats[chatIndex].lastMessage = text.trim() || "Image";
-                            userChatsData.chats[chatIndex].isSeen = id === currentUser?.id ? true : false;
-                            userChatsData.chats[chatIndex].updateAt = Date.now();
-
-                            await updateDoc(userChatRef, {
-                                chats: userChatsData.chats,
-                            });
-                        }
-                    }
-                });
-
-                setText(""); // Clear the text input after sending
-            } catch (err) {
-                console.log(err);
-            }
-
-            setImg({
-                file: null,
-                url: ""
-            });
         }
     };
 
+    const updateUserChats = async (messageText) => {
+        const userIds = [currentUser?.id, user?.id];
+        const batch = writeBatch(db);
+
+        for (const id of userIds) {
+            if (id) {
+                const userChatRef = doc(db, "userChats", id);
+                const userSnapShot = await getDoc(userChatRef);
+
+                if (userSnapShot.exists()) {
+                    const userChatsData = userSnapShot.data();
+                    const chatIndex = userChatsData.chats.findIndex(c => c.chatId === chatId);
+
+                    if (chatIndex !== -1) {
+                        userChatsData.chats[chatIndex] = {
+                            ...userChatsData.chats[chatIndex],
+                            lastMessage: messageText || "Image",
+                            isSeen: id === currentUser?.id,
+                            updateAt: new Date()
+                        };
+
+                        batch.update(userChatRef, { chats: userChatsData.chats });
+                    }
+                }
+            }
+        }
+
+        await batch.commit();
+    };
+
     const handleSend = async () => {
-        if (text.trim() === "" && !img.file) return; // Ensure either text or image is present
+        if (text.trim() === "" && !img.file) return;
 
         try {
+            const batch = writeBatch(db);
             const messageData = {
                 senderId: currentUser?.id || "",
                 createdAt: new Date(),
@@ -123,56 +113,41 @@ const Chat = () => {
                 messageData.img = imgUrl;
             }
 
-            await updateDoc(doc(db, "chats", chatId), {
+            const chatRef = doc(db, "chats", chatId);
+            batch.update(chatRef, {
                 messages: arrayUnion(messageData)
             });
 
-            const userIds = [currentUser?.id, user?.id];
+            await batch.commit();
+            await updateUserChats(messageData.text || "Image");
 
-            userIds.forEach(async (id) => {
-                if (id) {
-                    const userChatRef = doc(db, "userChats", id);
-                    const userSnapShot = await getDoc(userChatRef);
-
-                    if (userSnapShot.exists()) {
-                        const userChatsData = userSnapShot.data();
-
-                        const chatIndex = userChatsData.chats.findIndex(c => c.chatId === chatId);
-
-                        userChatsData.chats[chatIndex].lastMessage = text.trim() || "Image";
-                        userChatsData.chats[chatIndex].isSeen = id === currentUser?.id ? true : false;
-                        userChatsData.chats[chatIndex].updateAt = Date.now();
-
-                        await updateDoc(userChatRef, {
-                            chats: userChatsData.chats,
-                        });
-                    }
-                }
-            });
+            setText("");
+            setImg({ file: null, url: "" });
         } catch (err) {
-            console.log(err);
+            console.error("Error sending message:", err);
         }
-
-        setText("");
-        setImg({ file: null, url: "" });
     };
 
     useEffect(() => {
         const markMessagesAsSeen = async () => {
-            if (chatId && chat) {
-                const messages = chat.messages.map(message => {
-                    if (message.senderId !== currentUser?.id && !message.isSeen) {
+            if (chatId && chat && currentUser) {
+                const updatedMessages = chat.messages.map(message => {
+                    if (message.senderId !== currentUser.id && !message.isSeen) {
                         return { ...message, isSeen: true };
                     }
                     return message;
                 });
 
-                await updateDoc(doc(db, "chats", chatId), { messages });
+                if (JSON.stringify(updatedMessages) !== JSON.stringify(chat.messages)) {
+                    await updateDoc(doc(db, "chats", chatId), { messages: updatedMessages });
+                }
             }
         };
 
         markMessagesAsSeen();
-    }, [chatId, chat, currentUser?.id]);
+    }, [chatId, chat, currentUser]);
+
+    if (!chat) return <div>Loading...</div>;
 
     return (
         <div className="chat">
@@ -191,8 +166,8 @@ const Chat = () => {
                 </div>
             </div>
             <div className="center">
-                {chat?.messages?.map((message) => (
-                    <div className={`message ${message.senderId === currentUser?.id ? 'own' : ''}`} key={message.createdAt}>
+                {chat.messages.map((message) => (
+                    <div className={`message ${message.senderId === currentUser?.id ? 'own' : ''}`} key={message.createdAt.toMillis()}>
                         <div className="texts">
                             {message.img && <img src={message.img} alt="" />}
                             {message.text && <p>{message.text}</p>}
