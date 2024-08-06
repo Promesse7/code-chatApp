@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../lib/firebase.js";
 import { doc, getDoc } from "firebase/firestore";
-import { useChatStore } from "../lib/chatStore";
+import { useChatStore } from "../lib/chatStore .js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
