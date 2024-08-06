@@ -30,7 +30,7 @@ body{
    
      .navItems{
         display: flex;
-        gap: 20px;
+        justify-content: space-between;
 
         .navButton{
             align-items: center;
@@ -59,13 +59,13 @@ body{
 }
 
 .navbar{
-    height: 50px;
+    height: 60px;
     width: 90vw;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 40px 50px;
+    padding: 50px 50px;
     border: none;
     outline: none;
     border-radius: 10px 10px 0px 0px;

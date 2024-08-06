@@ -3,13 +3,14 @@ import List from './components/list/list';
 import Chat from './components/chat/chat';
 import Detail from './components/details/detail';
 import Login from './components/login/Login';
+import Register from './components/register/Register'; // Import Register component
 import LandingPage from './components/landingPage/LandingPage';
 import Notification from './components/notification/Notification';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './components/lib/firebase';
 import { useUserStore } from './components/lib/userStore';
-import { useChatStore } from './components/lib/chatStore ';
+import { useChatStore } from './components/lib/chatStore';
 import { Analytics } from '@vercel/analytics/react';
 
 function App() {
@@ -43,7 +44,9 @@ function App() {
       case 'landing':
         return <LandingPage onGetStarted={() => setCurrentView('login')} />;
       case 'login':
-        return <Login onLoginSuccess={() => setCurrentView('main')} />;
+        return <Login onLoginSuccess={() => setCurrentView('main')} onSwitchToRegister={() => setCurrentView('register')} />;
+      case 'register':
+        return <Register onRegisterSuccess={() => setCurrentView('main')} onSwitchToLogin={() => setCurrentView('login')} />;
       case 'main':
         return (
           <>
