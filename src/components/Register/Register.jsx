@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import profile from "./rp.png";
 import Upload from "../lib/upload.js";
-import "./login.css";
+import '../login/Login.css';
 
 const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
     const [avatar, setAvatar] = useState({ file: null, url: "" });

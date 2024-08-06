@@ -5,12 +5,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { useChatStore } from "../lib/chatStore";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import profile from "./rp.png";
-import Upload from "../lib/upload.js";
+
 import "./login.css";
 
 const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
-    const [avatar, setAvatar] = useState({ file: null, url: "" });
     const [loading, setLoading] = useState(false);
     const { setCurrentUser, initializeAuth } = useChatStore();
 
