@@ -32,17 +32,19 @@
                 padding: 20px;
                 background-color: rgba(17, 25, 40, 0.753);
                 color: white;
-                border-radius: 5px;
+                border-radius: 60px;
+                width: 80%;
             }
 
             label{
                 color:rgb(171, 59, 45);
                 display: flex;
-                width: 100%;
+                width: 80%;
                 align-items: center;
                 justify-content: space-between;
                 text-decoration: underline;
                 cursor: pointer;
+                translate: y -200px; 
 
                 img{
                     height: 50px;
@@ -53,15 +55,18 @@
                 }
              }
             button{
-                width: 80%;
+                width: 60%;
                 padding: 20px;
                 border: none;
                 background-color: #1f8ef1;
-                border-radius: 5px;
+                border-radius: 60px;
                 color: white;
                 cursor: pointer;
                 font-weight: 300;
-
+                
+                &:hover{
+                    background-color: #1f8ef1;
+                }
 
                 &:disabled{
                     background-color: #1f8ff1a9;

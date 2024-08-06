@@ -30,10 +30,11 @@
             input{
                 border: none;
                 outline: none;
-                padding: 20px;
+                padding: 60px;
                 background-color: rgba(17, 25, 40,  0.6);
                 color: white;
                 border-radius: 5px;
+                width: 80%;
             }
 
             label{
@@ -53,11 +54,11 @@
                 }
              }
             button{
-                width: 80%;
+                width: 60%;
                 padding: 20px;
                 border: none;
                 background-color: #1f8ef1;
-                border-radius: 5px;
+                border-radius: 60px;
                 color: white;
                 cursor: pointer;
                 font-weight: 300;
@@ -75,6 +76,7 @@
                 background-color: transparent;
                 border: none;
                 outline: none;
+                color: rgb(171, 59, 45);
             }
         }
  
