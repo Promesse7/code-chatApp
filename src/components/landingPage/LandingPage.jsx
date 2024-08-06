@@ -8,7 +8,6 @@ const LandingPage = ({ onGetStarted }) => {
     <div className="landing-page">
       <Navbar onGetStarted={onGetStarted} />
       <MainView onGetStarted={onGetStarted} />
-      
     </div>
   );
 };
