@@ -3,7 +3,7 @@ import List from './components/list/list';
 import Chat from './components/chat/chat';
 import Detail from './components/details/detail';
 import Login from './components/login/Login';
-import Register from './components/register/Register'; // Import Register component
+import Register from './components/Register/Register'; // Import Register component
 import LandingPage from './components/landingPage/LandingPage';
 import Notification from './components/notification/Notification';
 import { useState, useEffect } from 'react';
