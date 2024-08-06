@@ -13,8 +13,8 @@ const Navbar = ({onGetStarted}) => {
                 {/* Transforming Chats into Connections */}
                 </span>
                 <div className="navItems">
-                    <button className="navButton" onClick={onGetregistered}>Register</button>
-                    <button className="navButton" onClick={onGetloggedIn}>Login</button>
+                    <button className="navButton" onClick={onGetStarted}>Register</button>
+                    <button className="navButton" onClick={onGetStarted}>Login</button>
                 </div>
             </div>
         </div>
