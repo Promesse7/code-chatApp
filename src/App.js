@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './components/lib/firebase';
 import { useUserStore } from './components/lib/userStore';
-import { useChatStore } from './components/lib/chatStore';
+import { useChatStore } from './components/lib/chatStore ';
 import { Analytics } from '@vercel/analytics/react';
 
 function App() {
