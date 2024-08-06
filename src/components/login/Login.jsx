@@ -40,13 +40,15 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
     return (
         <div className="login">
             <div className="item">
-                <h2>Welcome back!</h2>
                 <form action="" onSubmit={handleLogin}>
+                <h2>Welcome back!</h2>
                     <input type="text" placeholder="Email" name="email" required />
                     <input type="password" placeholder="Password" name="password" required />
                     <button disabled={loading}>{loading ? "Loading..." : "Sign In"}</button>
+
+                    <button className="switch" onClick={onSwitchToRegister}>Don't have an account? Register here</button>
                 </form>
-                <button onClick={onSwitchToRegister}>Don't have an account? Register here</button>
+                
             </div>
         </div>
     );
