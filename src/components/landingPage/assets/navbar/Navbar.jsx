@@ -21,4 +21,4 @@ const Navbar = ({onGetStarted}) => {
     )
 }
 
-export default Navbar
+export default Navbar 
