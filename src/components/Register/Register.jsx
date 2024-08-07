@@ -71,6 +71,15 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
             <div className="attract">
             <img src={logo} alt="" />
             <div className="descri">
+
+             <section className="type">
+
+                 <div class="container">
+                         <span className="text first-text">Talkie &gt; &gt; </span>
+                         <span className="text sec-text"></span>
+                 </div>
+    
+            </section>
                  <h1>Talkie your best chatting <br /> experience.</h1>
             </div>
             <div className="foot">
@@ -79,6 +88,7 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
             </div>
             </div>
 
+            <hr className="sep"/>
 
             <div className="item">
                 <h2>Create an account!</h2>

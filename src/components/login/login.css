@@ -91,6 +91,9 @@
         }
     }
 
+    .sep{
+        border: 1px solid rgb(171, 59, 45);
+    }
     
 
     .attract {
@@ -123,4 +126,64 @@
             margin-top: 100px;
         }
     }
+
+    /* our typing animation */
+
+
+
+
+
+section.type{
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #010718;
+    text-align: center;
+    overflow:hidden ;
+    position: inherit;
+}
+.container{
+ width:836px;
+ overflow: hidden;
+}
+.container, .text.first-text, .text.sec-text{
+    position: relative;
+    color: #4070f4;
+    font-size: 25px;
+    font-weight: 600;
+      margin-top: 4vh;
+      margin-bottom: 10vh;
+}
+.text.first-text{
+    color: #fff;
+}
+
+.text.sec-text::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color:#010718;
+    border-left: #4070f4 solid 2px;
+    animation: animate 4s steps(12) infinite;
+
+} 
+@keyframes animate {
+    40%,60%{
+        left:calc(100% + 4px);
+    }
+    100%{
+        left: 0%;
+    }
+}
+
+
+
+
+
+/* our typing animation ends here*/
+
 }

@@ -38,6 +38,21 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
         }
     };
 
+    const text= document.querySelector(".sec-text");
+    const textLoad = () =>{
+        setTimeout(() => {
+            text.textContent="Relax.";  
+        }, 0);
+        setTimeout(() => {
+            text.textContent="Be happy.";  
+        }, 4000);
+        setTimeout(() => {
+            text.textContent="Welcome.";  
+        }, 8000);
+    }
+    textLoad();
+    setInterval(textLoad, 12000);
+
     return (
         <div className="login">
             <div className="item">
@@ -51,10 +66,20 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
                 </form>
                 
             </div>
+            <hr className="sep"/>
 
             <div className="attract">
             <img src={logo} alt="" />
             <div className="descri">
+
+            <section className="type">
+
+                 <div class="container">
+                         <span className="text first-text">Talkie &gt; &gt; </span>
+                         <span className="text sec-text"></span>
+                 </div>
+    
+            </section>
                  <h1>Talkie your best chatting <br /> experience.</h1>
             </div>
             <div className="foot">
