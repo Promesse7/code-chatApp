@@ -134,26 +134,25 @@
 
 
 section.type{
-    min-height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #010718;
+    background-color: rgb(171, 59, 45);
     text-align: center;
     overflow:hidden ;
     position: inherit;
 }
-.container{
- width:836px;
+.typeContainer{
+ width:80%;
  overflow: hidden;
 }
 .container, .text.first-text, .text.sec-text{
     position: relative;
-    color: #4070f4;
+    color: #ffffff;
     font-size: 25px;
     font-weight: 600;
-      margin-top: 4vh;
-      margin-bottom: 10vh;
+      margin-top: 2vh;
+      margin-bottom: 4vh;
 }
 .text.first-text{
     color: #fff;
@@ -166,8 +165,8 @@ section.type{
     left: 0;
     height: 100%;
     width: 100%;
-    background-color:#010718;
-    border-left: #4070f4 solid 2px;
+    background-color:rgb(171, 59, 45);
+    border-left: #ffffff solid 2px;
     animation: animate 4s steps(12) infinite;
 
 } 

@@ -74,7 +74,7 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
 
             <section className="type">
 
-                 <div class="container">
+                 <div className="typeContainer">
                          <span className="text first-text">Talkie &gt; &gt; </span>
                          <span className="text sec-text"></span>
                  </div>
