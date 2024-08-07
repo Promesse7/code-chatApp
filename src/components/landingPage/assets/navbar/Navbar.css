@@ -1,66 +1,69 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body{
+  }
+  
+  body {
     font-family: 'Poppins', sans-serif;
-}
-.navContainer{
+  }
+  
+  .navContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 100%;
     padding-right: 6em;
-
-    span.logo{
+  
+    span.logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      img {
+        margin-left: 4em;
+        width: 100px;
+        height: 80px;
+        object-fit: contain;
+        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+      }
+    }
+  
+    .navItems {
+      display: flex;
+      justify-content: space-between;
+  
+      .navButton {
         display: flex;
         align-items: center;
         justify-content: center;
-        img{
-            margin-left: 4em;
-            width: 100px;
-            height: 80px;
-            object-fit: contain;
-            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+        font-size: 20px;
+        font-weight: 500;
+        color: rgb(171, 59, 45);
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 10px gray;
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 10px;
+  
+        &:hover {
+          background-color: rgb(171, 59, 45);
+          color: white;
         }
+      }
+  
+      .navButton:first-of-type {
+        background-color: rgb(171, 59, 45);
+        color: white;
+      }
     }
-   
-     .navItems{
-        display: flex;
-        justify-content: space-between;
-
-        .navButton{
-            align-items: center;
-            justify-content: space-between;
-            font-size: 20px;
-            font-weight: 500;
-            color: rgb(171, 59, 45);
-            text-decoration: none;  
-            border-radius: 10px;
-            padding: 10px 20px;
-            box-shadow: 0px 0px 10px gray;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-            margin-right: 10px;
-
-            &:hover{
-                background-color: rgb(171, 59, 45);
-                color: white;
-            }
-        }
-        .navButton:first-of-type{
-            background-color: rgb(171, 59, 45);
-            color: white;
-        }
-     }
-    
-}
-
-.navbar{
+  }
+  
+  .navbar {
     height: 60px;
     width: 90vw;
     background-color: white;
@@ -72,4 +75,95 @@ body{
     outline: none;
     border-radius: 10px 10px 0px 0px;
     box-shadow: 0px 0px 10px gray;
-}
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (max-width: 1200px) {
+    .navContainer {
+      padding-right: 4em;
+      
+      span.logo img {
+        margin-left: 3em;
+        width: 80px;
+        height: 60px;
+      }
+  
+      .navItems .navButton {
+        font-size: 18px;
+        padding: 8px 16px;
+      }
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .navContainer {
+      padding-right: 2em;
+  
+      span.logo img {
+        margin-left: 2em;
+        width: 60px;
+        height: 50px;
+      }
+  
+      .navItems .navButton {
+        font-size: 16px;
+        padding: 6px 12px;
+      }
+    }
+  
+    .navbar {
+      padding: 40px 40px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navContainer {
+      flex-direction: column;
+      padding-right: 1em;
+      
+      span.logo img {
+        margin-left: 1em;
+        width: 50px;
+        height: 40px;
+      }
+  
+      .navItems {
+        flex-direction: column;
+        align-items: center;
+  
+        .navButton {
+          font-size: 14px;
+          padding: 4px 8px;
+          margin: 5px 0;
+        }
+      }
+    }
+  
+    .navbar {
+      width: 100%;
+      padding: 30px 30px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .navContainer {
+      padding-right: 0.5em;
+  
+      span.logo img {
+        margin-left: 0.5em;
+        width: 40px;
+        height: 30px;
+      }
+  
+      .navItems .navButton {
+        font-size: 12px;
+        padding: 2px 6px;
+      }
+    }
+  
+    .navbar {
+      padding: 20px 20px;
+    }
+  }
+  
