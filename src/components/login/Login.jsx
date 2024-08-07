@@ -18,6 +18,28 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
         return () => unsubscribe();
     }, [initializeAuth]);
 
+    useEffect(() => {
+        const text = document.querySelector(".sec-text");
+
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "Relax.";
+            }, 0);
+            setTimeout(() => {
+                text.textContent = "Be happy.";
+            }, 4000);
+            setTimeout(() => {
+                text.textContent = "Welcome.";
+            }, 8000);
+        };
+
+        textLoad();
+        const interval = setInterval(textLoad, 12000);
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, []);
+
+
     const handleLogin = async e => {
         e.preventDefault();
         setLoading(true);
@@ -38,20 +60,6 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
         }
     };
 
-    const text= document.querySelector(".sec-text");
-    const textLoad = () =>{
-        setTimeout(() => {
-            text.textContent="Relax.";  
-        }, 0);
-        setTimeout(() => {
-            text.textContent="Be happy.";  
-        }, 4000);
-        setTimeout(() => {
-            text.textContent="Welcome.";  
-        }, 8000);
-    }
-    textLoad();
-    setInterval(textLoad, 12000);
 
     return (
         <div className="login">
