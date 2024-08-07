@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useChatStore } from "../lib/chatStore .js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "./logo.png"
 
 import "./login.css";
 
@@ -51,7 +52,7 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
                 
             </div>
             <hr className="sep"/>
-            
+
             <div className="attract">
             <img src={logo} alt="" />
             <div className="descri">
