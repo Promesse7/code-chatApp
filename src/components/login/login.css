@@ -137,7 +137,7 @@ section.type{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(171, 59, 45);
+    background-color: #ffffff;
     text-align: center;
     overflow:hidden ;
     position: inherit;
@@ -148,14 +148,14 @@ section.type{
 }
 .container, .text.first-text, .text.sec-text{
     position: relative;
-    color: #ffffff;
+    color: rgb(171, 59, 45);
     font-size: 25px;
     font-weight: 600;
       margin-top: 2vh;
       margin-bottom: 4vh;
 }
 .text.first-text{
-    color: #fff;
+    color: rgb(171, 59, 45);
 }
 
 .text.sec-text::before{
@@ -165,8 +165,8 @@ section.type{
     left: 0;
     height: 100%;
     width: 100%;
-    background-color:rgb(171, 59, 45);
-    border-left: #ffffff solid 2px;
+    background-color:#ffffff;
+    border-left: rgb(171, 59, 45) solid 2px;
     animation: animate 4s steps(12) infinite;
 
 } 

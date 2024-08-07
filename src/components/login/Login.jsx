@@ -22,15 +22,17 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
         const text = document.querySelector(".sec-text");
 
         const textLoad = () => {
-            setTimeout(() => {
-                text.textContent = "Relax.";
-            }, 0);
-            setTimeout(() => {
-                text.textContent = "Be happy.";
-            }, 4000);
-            setTimeout(() => {
-                text.textContent = "Welcome.";
-            }, 8000);
+            if (text) {
+                setTimeout(() => {
+                    text.textContent = "Relax.";
+                }, 0);
+                setTimeout(() => {
+                    text.textContent = "Be happy.";
+                }, 4000);
+                setTimeout(() => {
+                    text.textContent = "Welcome.";
+                }, 8000);
+            }
         };
 
         textLoad();
