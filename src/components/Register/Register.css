@@ -54,7 +54,7 @@
                     opacity: 0.6;
                 }
              }
-            button{
+            button.register{
                 width: 60%;
                 padding: 20px;
                 border: none;

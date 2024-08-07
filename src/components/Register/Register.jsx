@@ -78,8 +78,8 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
                     <input type="text" placeholder="Username" name="username" required />
                     <input type="email" placeholder="Email" name="email" required />
                     <input type="password" placeholder="Password" name="password" required />
-                    <button disabled={loading}>{loading ? "Loading..." : "Sign Up"}</button>
-                    <button onClick={onSwitchToLogin}>Already have an account? Login here</button>
+                    <button  className="register" disabled={loading}>{loading ? "Loading..." : "Sign Up"}</button>
+                    <button className="switch" onClick={onSwitchToLogin}>Already have an account? Login here</button>
                 </form>
                 
             </div>
