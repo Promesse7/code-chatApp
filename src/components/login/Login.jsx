@@ -56,7 +56,7 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
             <div className="attract">
             <img src={logo} alt="" />
             <div className="descri">
-                 <h1>Talkie your best chatting experience.</h1>
+                 <h1>Talkie your best chatting <br /> experience.</h1>
             </div>
             <div className="foot">
                 <span>PromCode</span>

@@ -12,6 +12,7 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        border-bottom: none;
 
         form {
             display: flex;
@@ -37,7 +38,13 @@
                 color: white;
                 border-radius: 60px;
                 width: 80%;
-                box-sizing: border-box; /* Ensure padding is included in width */
+                box-sizing: border-box; 
+
+
+                &::placeholder {
+                    color: #ffffff; 
+                    opacity: 1; 
+                }
             }
 
             label {
@@ -86,23 +93,27 @@
 
     .sep {
         border: 1px solid #ffffff;
+        height: 100%;
     }
 
     .attract {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Add this to center elements horizontally */
+        align-items: center; 
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
 
         img {
-            height: 100px;
-            width: 100px;
-            filter: drop-shadow(0 0 10px gray); /* Fixed the drop-shadow syntax */
+            height: 200px;
+            width: 200px;
+            filter: drop-shadow(0 0 10px gray); 
         }
 
         .descri {
             margin-top: 30vh;
             color: rgb(171, 59, 45);
-            text-align: center; /* Ensure the text is centered */
+            text-align: center; 
         }
 
         .foot {
@@ -112,6 +123,7 @@
             color: rgb(171, 59, 45);
             padding: 20px; /* Add padding to ensure spacing */
             box-sizing: border-box;
+            margin-top: 200px;
         }
     }
 }
