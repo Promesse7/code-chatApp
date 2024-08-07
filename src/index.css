@@ -23,8 +23,7 @@ body {
   border: none;
   display: flex;
   box-shadow: 5px 10px 10px 10px gray;
-  flex-direction: column; /* Default to column for mobile */
-  padding: 20px; /* Add some padding */
+  flex-direction: column; 
 }
 
 .loading {

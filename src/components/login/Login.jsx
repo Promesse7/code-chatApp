@@ -50,6 +50,18 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
                 </form>
                 
             </div>
+            <hr className="sep"/>
+            
+            <div className="attract">
+            <img src={logo} alt="" />
+            <div className="descri">
+                 <h1>Talkie your best chatting experience.</h1>
+            </div>
+            <div className="foot">
+                <span>PromCode</span>
+                <span>copyright 2024</span>
+            </div>
+            </div>
         </div>
     );
 };
