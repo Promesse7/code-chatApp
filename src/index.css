@@ -34,26 +34,3 @@ body {
   background-color: rgba(17, 25, 40, 0.9);
 }
 
-@media (min-width: 600px) {
-  .container {
-    flex-direction: row; /* Change to row for larger screens */
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 80vw;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    width: 70vw;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    width: 60vw;
-  }
-}

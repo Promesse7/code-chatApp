@@ -1,33 +1,49 @@
-.userInfo{
+.userInfo {
     padding: 10px;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: space-around;
-
-
-    .user{
+    flex-wrap: wrap;
+  }
+  
+  .user {
     align-items: center;
     display: flex;
     gap: 20px;
-
-    img{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        color: white;
-        object-fit: cover;
+  }
+  
+  .user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    object-fit: cover;
+  }
+  
+  .icon {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .icon img {
+    filter: invert(100%) brightness(1) saturate(100%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 600px) {
+    .userInfo {
+      flex-direction: column;
     }
+  
+    .user {
+      justify-content: center;
     }
-    .icon{
-        display: flex;
-        gap: 20px;
-
-        img{
-            filter: invert(100%) brightness(1) saturate(100%);
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
+  
+    .icon {
+      justify-content: center;
     }
-}
+  }
+  
