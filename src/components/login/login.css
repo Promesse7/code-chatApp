@@ -107,6 +107,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        color: rgb(171, 59, 45);
       }
 }
 }
