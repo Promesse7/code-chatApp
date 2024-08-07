@@ -350,7 +350,6 @@
   }
 
   .hero .rating-container {
-    flex-direction: column;
     align-items: flex-start;
   }
 
@@ -398,7 +397,6 @@
   }
 
   .hero .rating-info {
-    flex-direction: column;
     align-items: flex-start;
   }
 
