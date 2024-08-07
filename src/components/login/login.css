@@ -1,21 +1,21 @@
-.login{
+.login {
     width: 100%;
     height: 100%;
     display: flex;
     gap: 100px;
     align-items: center;
+    box-sizing: border-box;
 
-    .item{
-        flex: 1px;
+    .item {
+        flex: 1; /* Ensure this uses a valid flex value */
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 20px;
 
-
-        form{
+        form {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 20px;
@@ -23,25 +23,24 @@
             background-color: #ffffff;
             border-radius: 20px;
             padding: 20px;
-            color: #ffffff;
-        
+            color: #000000; /* Ensure the text color is visible */
 
-            h2{
+            h2 {
                 color: rgb(171, 59, 45);
             }
 
-
-            input{
+            input {
                 border: none;
                 outline: none;
                 padding: 20px;
-                background-color: rgba(17, 25, 40,  0.6);
+                background-color: rgba(17, 25, 40, 0.6);
                 color: white;
                 border-radius: 60px;
                 width: 80%;
+                box-sizing: border-box; /* Ensure padding is included in width */
             }
 
-            label{
+            label {
                 display: flex;
                 width: 100%;
                 align-items: center;
@@ -49,15 +48,16 @@
                 text-decoration: underline;
                 cursor: pointer;
 
-                img{
+                img {
                     height: 50px;
                     width: 50px;
                     border-radius: 10px;
-                    object-fit: cover ;
+                    object-fit: cover;
                     opacity: 0.6;
                 }
-             }
-            button{
+            }
+
+            button {
                 width: 60%;
                 padding: 20px;
                 border: none;
@@ -67,14 +67,13 @@
                 cursor: pointer;
                 font-weight: 300;
 
-
-                &:disabled{
+                &:disabled {
                     background-color: #1f8ff1a9;
                     cursor: not-allowed;
                 }
             }
 
-            .switch{
+            .switch {
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 font-size: 16px;
                 background-color: transparent;
@@ -83,31 +82,36 @@
                 color: rgb(171, 59, 45);
             }
         }
- 
-} 
-   .sep{
-    border:1px solid #ffffff ;
-   }
+    }
 
-      .attract{
-             display: flex;
-             flex-direction: column;
+    .sep {
+        border: 1px solid #ffffff;
+    }
 
-             img{
-                height: 100px;
-                width: 100px;
-                filter: drop-shadow(0 0 0 10px gray);
-             }
-
-     .descri{
-        margin-top: 30vh;
-        color: rgb(171, 59, 45);
-     }
-      .foot{
+    .attract {
         display: flex;
-        justify-content: space-between;
-        width: 100%;
-        color: rgb(171, 59, 45);
-      }
-}
+        flex-direction: column;
+        align-items: center; /* Add this to center elements horizontally */
+
+        img {
+            height: 100px;
+            width: 100px;
+            filter: drop-shadow(0 0 10px gray); /* Fixed the drop-shadow syntax */
+        }
+
+        .descri {
+            margin-top: 30vh;
+            color: rgb(171, 59, 45);
+            text-align: center; /* Ensure the text is centered */
+        }
+
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            color: rgb(171, 59, 45);
+            padding: 20px; /* Add padding to ensure spacing */
+            box-sizing: border-box;
+        }
+    }
 }
