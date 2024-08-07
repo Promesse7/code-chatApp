@@ -51,7 +51,6 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
                 </form>
                 
             </div>
-            <hr className="sep"/>
 
             <div className="attract">
             <img src={logo} alt="" />

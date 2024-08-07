@@ -6,6 +6,7 @@ import { useChatStore } from "../lib/chatStore .js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import profile from "./rp.png";
+import logo from "./logo.png"
 import Upload from "../lib/upload.js";
 import './Register.css';
 
@@ -78,7 +79,6 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
             </div>
             </div>
 
-            <hr className="sep"/>
 
             <div className="item">
                 <h2>Create an account!</h2>
