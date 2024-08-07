@@ -72,4 +72,4 @@ const MainVew = ({ onGetStarted }) => {
     )
 }
 
-export default MainVew 
+export default MainVew  
