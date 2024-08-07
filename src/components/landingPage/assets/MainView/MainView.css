@@ -14,227 +14,232 @@
   border-radius: 0 0 10px 10px;
   background-color: #ffffff;
   overflow: hidden;
+}
 
-  img {
-    width: 80vw;
-    height: 80vh;
-    object-fit: contain;
-    border-radius: 10px;
-  }
+.hero img {
+  width: 80vw;
+  height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
 
-  .left-view {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 120vw;
-    margin-left: 8em;
+.hero .left-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 120vw;
+  margin-left: 8em;
+}
 
-    h1 {
-      font-size: 40px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      text-transform: capitalize;
-      color: rgb(171, 59, 45);
-    }
-    p {
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 20px;
-      color: rgb(151, 42, 27);
-    }
-  }
+.hero .left-view h1 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: rgb(171, 59, 45);
+}
 
-  button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 8px 15px;
-    background-color: rgb(171, 59, 45);
-    color: white;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    height: 50px;
-    font-size: 18px;
-    font-weight: 600;
-    width: 200px;
-  }
+.hero .left-view p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: rgb(151, 42, 27);
+}
 
-  .rating-container {
-    color: rgb(151, 42, 27);
-    display: flex;
-    align-items: center;
-    font-family: Arial, sans-serif;
-  }
+.hero button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 8px 15px;
+  background-color: rgb(171, 59, 45);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  width: 200px;
+}
 
-  .user-images {
-    display: flex;
-    margin-right: 10px;
-    height: 80px;
-    width: 15vw;
-    overflow: hidden;
-    padding: 10px;
-  }
+.hero .rating-container {
+  color: rgb(151, 42, 27);
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
 
-  .user-images img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 4px solid white;
-    margin-right: -20px;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
+.hero .user-images {
+  display: flex;
+  margin-right: 10px;
+  height: 80px;
+  width: 15vw;
+  overflow: hidden;
+  padding: 10px;
+}
 
-  .rating-info {
-    padding: 0px;
-    gap: 20px;
-    color: rgb(151, 42, 27);
-    display: flex;
+.hero .user-images img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-right: -20px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
-    .customer-count {
-      color: rgb(151, 42, 27);
-      font-weight: bold;
-      font-size: 20px;
-      margin-left: -40px;
-    }
-    .customer-count.words {
-      color: rgb(151, 42, 27);
-      font-size: 15px;
-      font-weight: 400;
-      margin-top: -18px;
-    }
-  }
+.hero .rating-info {
+  padding: 0px;
+  gap: 20px;
+  color: rgb(151, 42, 27);
+  display: flex;
+}
 
-  .rating-score {
-    color: rgb(151, 42, 27);
-    font-size: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.hero .rating-info .customer-count {
+  color: rgb(151, 42, 27);
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: -40px;
+}
 
-  .score {
-    color: rgb(151, 42, 27);
-    font-weight: bold;
-    font-size: 20px;
-    margin-right: 4px;
-  }
+.hero .rating-info .customer-count.words {
+  color: rgb(151, 42, 27);
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: -18px;
+}
 
-  .stars {
-    color: gold;
-    font-size: 15px;
-    margin-left: 4px;
+.hero .rating-score {
+  color: rgb(151, 42, 27);
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    span {
-      font-size: 15px;
-      color: rgb(151, 42, 27);
-    }
-  }
+.hero .score {
+  color: rgb(151, 42, 27);
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 4px;
+}
 
-  .cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 100px;
-    height: 100%;
-  }
+.hero .stars {
+  color: gold;
+  font-size: 15px;
+  margin-left: 4px;
+}
 
-  .testimonial-card {
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-    width: 290px;
-    height: 60px;
-  }
+.hero .stars span {
+  font-size: 15px;
+  color: rgb(151, 42, 27);
+}
 
-  .testimonial-card.two {
-    translate: -460px 100px 10px;
-    width: 200px;
-  }
-  .testimonial-card.three {
-    translate: -250px 100px 10px;
-    width: 200px;
-  }
-  .testimonial-card.one {
-    translate: -200px -150px 10px;
-  }
+.hero .cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100px;
+  height: 100%;
+}
 
-  .user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
-  }
+.hero .testimonial-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  width: 290px;
+  height: 60px;
+}
 
-  .testimonial-content {
-    flex-grow: 1;
-  }
+.hero .testimonial-card.two {
+  translate: -460px 100px 10px;
+  width: 200px;
+}
 
-  .user-name {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 0 4px 0;
-    color: #000;
-  }
+.hero .testimonial-card.three {
+  translate: -250px 100px 10px;
+  width: 200px;
+}
 
-  .testimonial-text {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    color: #666;
-    margin: 0;
-    width: 100%;
-    word-break: keep-all;
-  }
+.hero .testimonial-card.one {
+  translate: -200px -150px 10px;
+}
 
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    translate: 100px 0 10px;
-  }
+.hero .user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.hero .testimonial-content {
+  flex-grow: 1;
+}
+
+.hero .user-name {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  color: #000;
+}
+
+.hero .testimonial-text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  width: 100%;
+  word-break: keep-all;
+}
+
+.hero .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  translate: 100px 0 10px;
 }
 
 /* Media Queries for Responsiveness */
-
 @media (max-width: 1200px) {
   .hero {
     padding-left: 6em;
+  }
 
-    .left-view {
-      margin-left: 6em;
+  .hero .left-view {
+    margin-left: 6em;
+    width: 100%;
+  }
 
-      h1 {
-        font-size: 35px;
-      }
-      p {
-        font-size: 18px;
-      }
-    }
+  .hero .left-view h1 {
+    font-size: 35px;
+  }
 
-    button {
-      font-size: 16px;
-      padding: 7px 14px;
-    }
+  .hero .left-view p {
+    font-size: 18px;
+  }
 
-    .user-images {
-      height: 70px;
-      width: 13vw;
-    }
+  .hero button {
+    font-size: 16px;
+    padding: 7px 14px;
+  }
 
-    .testimonial-card {
-      width: 260px;
-      height: 55px;
-    }
+  .hero .user-images {
+    height: 70px;
+    width: 13vw;
+  }
+
+  .hero .testimonial-card {
+    width: 260px;
+    height: 55px;
   }
 }
 
@@ -242,100 +247,137 @@
   .hero {
     flex-direction: column;
     padding-left: 4em;
+  }
 
-    .left-view {
-      margin-left: 4em;
-      width: 100%;
+  .hero .left-view {
+    margin-left: 4em;
+    width: 100%;
+  }
 
-      h1 {
-        font-size: 30px;
-      }
-      p {
-        font-size: 16px;
-      }
-    }
+  .hero .left-view h1 {
+    font-size: 30px;
+  }
 
-    button {
-      font-size: 14px;
-      padding: 6px 12px;
-    }
+  .hero .left-view p {
+    font-size: 16px;
+  }
 
-    .user-images {
-      height: 60px;
-      width: 11vw;
-    }
+  .hero button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 
-    .testimonial-card {
-      width: 230px;
-      height: 50px;
-    }
+  .hero .user-images {
+    height: 60px;
+    width: 11vw;
+  }
+
+  .hero .testimonial-card {
+    width: 230px;
+    height: 50px;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
     padding-left: 2em;
+  }
 
-    .left-view {
-      margin-left: 2em;
-      width: 100%;
+  .hero .left-view {
+    margin-left: 2em;
+    width: 100%;
+  }
 
-      h1 {
-        font-size: 25px;
-      }
-      p {
-        font-size: 14px;
-      }
-    }
+  .hero .left-view h1 {
+    font-size: 25px;
+  }
 
-    button {
-      font-size: 12px;
-      padding: 5px 10px;
-      width: 180px;
-    }
+  .hero .left-view p {
+    font-size: 14px;
+  }
 
-    .user-images {
-      height: 50px;
-      width: 9vw;
-    }
+  .hero button {
+    font-size: 12px;
+    padding: 5px 10px;
+    width: 180px;
+  }
 
-    .testimonial-card {
-      width: 200px;
-      height: 45px;
-    }
+  .hero .user-images {
+    height: 50px;
+  }
+
+  .hero .testimonial-card {
+    width: 200px;
+    height: 45px;
   }
 }
 
 @media (max-width: 576px) {
   .hero {
     padding-left: 1em;
+  }
 
-    .left-view {
-      margin-left: 1em;
-      width: 100%;
+  .hero .left-view {
+    margin-left: 1em;
+    width: 100%;
+  }
 
-      h1 {
-        font-size: 20px;
-      }
-      p {
-        font-size: 12px;
-      }
-    }
+  .hero .left-view h1 {
+    font-size: 20px;
+  }
 
-    button {
-      font-size: 10px;
-      padding: 4px 8px;
-      width: 160px;
-    }
+  .hero .left-view p {
+    font-size: 12px;
+  }
 
-    .user-images {
-      height: 40px;
-      width: 7vw;
-    }
+  .hero button {
+    font-size: 10px;
+    padding: 4px 8px;
+    width: 160px;
+  }
 
-    .testimonial-card {
-      width: 180px;
-      height: 40px;
-    }
+  .hero .user-images {
+    height: 40px;
+    width: 7vw;
+  }
+
+  .hero .testimonial-card {
+    width: 180px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-left: 0.5em;
+  }
+
+  .hero .left-view {
+    margin-left: 0.5em;
+    width: 100%;
+  }
+
+  .hero .left-view h1 {
+    font-size: 18px;
+  }
+
+  .hero .left-view p {
+    font-size: 10px;
+  }
+
+  .hero button {
+    font-size: 8px;
+    padding: 3px 6px;
+    width: 140px;
+  }
+
+  .hero .user-images {
+    height: 35px;
+    width: 6vw;
+  }
+
+  .hero .testimonial-card {
+    width: 160px;
+    height: 35px;
   }
 }
