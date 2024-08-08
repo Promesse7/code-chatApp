@@ -232,3 +232,13 @@ body {
     stroke-dashoffset: -440;
   }
 }
+
+/* Responsiveness */
+
+@media (max-width: 480px) {
+  .container{
+    width: 95vw;
+    height: 95vh;
+    overflow: hidden;
+  }
+}

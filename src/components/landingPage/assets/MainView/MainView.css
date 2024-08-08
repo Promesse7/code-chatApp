@@ -420,7 +420,8 @@
     padding: 1.5px 3px;
     width: 140px;
     height: 40px;
-    margin: 2px 0px;
+    margin-bottom: 2px;
+    margin-top: 2px;
   }
 
   .hero .rating-info {
@@ -461,8 +462,9 @@
     font-size: 8px;
   }
   .hero-image{
-    width: 60px;
-    height: 40px;
+    width: 40px;
+    height: 30px;
+    margin-top: 4px;
   }
 
 }
