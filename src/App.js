@@ -37,6 +37,15 @@ function App() {
       }
       setIsLoading(false);
     });
+    useEffect(() => {
+      // Set a timer to hide the spinner after 3 seconds (3000 ms)
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 4000);
+  
+      // Cleanup the timer if the component is unmounted
+      return () => clearTimeout(timer);
+    }, []);
 
     console.log('Initializing auth');
     initializeAuth();
