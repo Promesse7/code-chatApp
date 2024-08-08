@@ -287,7 +287,9 @@
     height: 50px;
   }
 
- 
+  .hero .hero-image {
+    translate: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -434,6 +436,7 @@
   .hero .cont{
     margin-top: 0px;
     margin-bottom: 20px;
+    filter: drop-shadow(2px 2px 4px 6px gray);
   }
 
   .hero .testimonial-card {
