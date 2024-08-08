@@ -67,10 +67,7 @@ const MainVew = ({ onGetStarted }) => {
                                         </div>
                               </div>
                         </div>
-                              <div className="foot">
-                                  <span>PromCode</span>
-                                  <span>Copyright 2024</span>
-                              </div>
+                              
         </div>
    
     )

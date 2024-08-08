@@ -18,6 +18,7 @@
   flex-direction: column;
   width: 120vw;
   margin-left: 8em;
+  padding-left: 4vw;
 }
 
 .hero .left-view h1 {
@@ -197,15 +198,24 @@
   translate: 100px 0 10px;
 }
 
-.foot {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  color: rgb(171, 59, 45);
-  padding: 20px; /* Add padding to ensure spacing */
-  box-sizing: border-box;
-  margin-top: 100px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Responsive MainView Styles */
 @media (max-width: 1200px) {
@@ -410,6 +420,7 @@
     padding: 1.5px 3px;
     width: 140px;
     height: 40px;
+    margin: 2px 0px;
   }
 
   .hero .rating-info {
@@ -422,6 +433,10 @@
   .hero .rating-score {
     margin-top: 10px;
     font-size: 8px;
+  }
+  .hero .cont{
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .hero .testimonial-card {
@@ -447,7 +462,7 @@
   }
   .hero-image{
     width: 60px;
-    height: 4px;
+    height: 40px;
   }
 
 }
