@@ -348,6 +348,7 @@
 
   .hero .rating-container {
     align-items: flex-start;
+    display: none;
   }
 
 
@@ -405,7 +406,10 @@
   .hero .rating-info {
     align-items: flex-start;
   }
-
+  .customer-count,.customer-count.words,.score,.stars{
+    background-color: transparent;
+    font-size: 10px;
+  }
   .hero .rating-score {
     margin-top: 10px;
     font-size: 8px;
@@ -413,6 +417,8 @@
 
   .hero .testimonial-card {
     padding: 8px;
+    margin: 0;
+    translate: 0 0 0;
   }
 
   .hero .user-avatar {
@@ -421,10 +427,14 @@
   }
 
   .hero .user-name {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .hero .testimonial-text {
-    font-size: 5px;
+    font-size: 8px;
+  }
+  .hero-image{
+    width: 100px;
+    height: 100px;
   }
 }
