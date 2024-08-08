@@ -127,5 +127,53 @@
         margin-top: 100px;
     }
     
+
+    @media (min-width: 768px) {
+        .login {
+          flex-direction: row;
+          padding: 50px;
+        }
+      
+        .item form {
+          width: 500px;
+        }
+      
+        .sep {
+          border: 1px solid rgb(171, 59, 45);
+          width: 100%;
+        }
+      
+        .attract {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          background-color: #ffffff;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+      
+        .attract img {
+          height: 200px;
+          width: 200px;
+          filter: drop-shadow(0 0 10px gray);
+        }
+      
+        .attract .descri {
+          margin-top: 30vh;
+          color: rgb(171, 59, 45);
+          text-align: center;
+        }
+      
+        .attract .foot {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          color: rgb(171, 59, 45);
+          padding: 20px;
+          box-sizing: border-box;
+          margin-top: 100px;
+        }
+      }
     }
-    
