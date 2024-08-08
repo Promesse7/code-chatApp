@@ -463,6 +463,7 @@
   .hero-image{
     width: 50%;
     height: 50%;
+    object-fit: contain;
     margin-top: 2px;
   }
 
