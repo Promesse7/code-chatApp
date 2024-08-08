@@ -35,17 +35,11 @@ function App() {
         console.log('No user, setting view to landing');
         setCurrentView('landing');
       }
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
     });
-    useEffect(() => {
-      // Set a timer to hide the spinner after 3 seconds (3000 ms)
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 4000);
-  
-      // Cleanup the timer if the component is unmounted
-      return () => clearTimeout(timer);
-    }, []);
+   
 
     console.log('Initializing auth');
     initializeAuth();
