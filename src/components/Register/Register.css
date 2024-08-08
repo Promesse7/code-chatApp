@@ -128,7 +128,7 @@
     }
     
 
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
         .register {
           flex-direction: row;
           padding: 50px;
@@ -150,7 +150,7 @@
       }
     }
 
-    @media (min-width: 480px) {
+    @media (max-width: 480px) {
         .register {
           flex-direction: row;
           padding: 50px;
