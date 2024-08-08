@@ -191,8 +191,8 @@
 }
 
 .hero .hero-image {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
   border-radius: 10px;
   translate: 100px 0 10px;
