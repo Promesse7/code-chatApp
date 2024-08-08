@@ -18,29 +18,7 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
         return () => unsubscribe();
     }, [initializeAuth]);
 
-    useEffect(() => {
-        const text = document.querySelector(".sec-text");
-
-        const textLoad = () => {
-            if (text) {
-                setTimeout(() => {
-                    text.textContent = "Relax.";
-                }, 0);
-                setTimeout(() => {
-                    text.textContent = "Be happy.";
-                }, 4000);
-                setTimeout(() => {
-                    text.textContent = "Welcome.";
-                }, 8000);
-            }
-        };
-
-        textLoad();
-        const interval = setInterval(textLoad, 12000);
-
-        return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, []);
-
+    
 
     const handleLogin = async e => {
         e.preventDefault();
@@ -82,14 +60,6 @@ const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
             <img src={logo} alt="" />
             <div className="descri">
 
-            <section className="type">
-
-                 <div className="typeContainer">
-                         <span className="text first-text">Talkie &gt; &gt; </span>
-                         <span className="text sec-text"></span>
-                 </div>
-    
-            </section>
                  <h1>Talkie your best chatting <br /> experience.</h1>
             </div>
             <div className="foot">

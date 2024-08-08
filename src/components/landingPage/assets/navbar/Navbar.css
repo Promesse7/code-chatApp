@@ -160,6 +160,7 @@ span.logo img {
 
   .navbar {
     padding: 20px 20px;
+    border-bottom: none;
   }
 }
 

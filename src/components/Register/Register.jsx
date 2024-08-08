@@ -15,28 +15,6 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
     const [loading, setLoading] = useState(false);
     const { setCurrentUser } = useChatStore();
 
-    useEffect(() => {
-        const text = document.querySelector(".sec-text");
-
-        const textLoad = () => {
-            if (text) {
-                setTimeout(() => {
-                    text.textContent = "Relax.";
-                }, 0);
-                setTimeout(() => {
-                    text.textContent = "Be happy.";
-                }, 4000);
-                setTimeout(() => {
-                    text.textContent = "Welcome.";
-                }, 8000);
-            }
-        };
-
-        textLoad();
-        const interval = setInterval(textLoad, 12000);
-
-        return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, []);
 
     const handleAvatar = e => {
         if (e.target.files[0]) {
@@ -59,7 +37,6 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
 
             if (avatar.file) {
                 try {
-                    // Pass the user ID to the Upload function
                     imgUrl = await Upload(avatar.file, res.user.uid);
                 } catch (uploadError) {
                     console.log(uploadError);
@@ -95,14 +72,7 @@ const Register = ({ onRegisterSuccess, onSwitchToLogin }) => {
             <img src={logo} alt="" />
             <div className="descri">
 
-             <section className="type">
-
-                 <div className="typeContainer">
-                         <span className="text first-text">Talkie &gt; &gt; </span>
-                         <span className="text sec-text"></span>
-                 </div>
-    
-            </section>
+           
                  <h1>Talkie your best chatting <br /> experience.</h1>
             </div>
             <div className="foot">
