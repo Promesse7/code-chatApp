@@ -401,18 +401,19 @@
   .hero {
     padding-left: 0.5em;
     padding-right: 0.5em;
+    width: 100%;
   }
 
   .hero .left-view h1 {
     font-size: 15px;
     text-align: center;
-    padding: 10px;
+    padding: 4px;
   }
 
   .hero .left-view p {
     font-size: 10px;
     text-align: center;
-    padding: 15px;
+    padding: 7px;
   }
 
   .hero button {
