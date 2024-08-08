@@ -148,6 +148,7 @@ span.logo img {
   .navItems .navButton {
     font-size: 12px;
     padding: 2px 6px;
+    margin-left: 10px;
   }
 
   .navbar {
@@ -174,7 +175,7 @@ span.logo img {
   .navButton {
     font-size: 12px;
     padding: 2px 4px;
-    margin: 3px 0;
+    margin-left:10px;
   }
 
   .navbar {
@@ -255,7 +256,7 @@ span.logo img {
   .navButton {
     font-size: 10px;
     padding: 2px 4px;
-    margin: 2px 0;
+    margin-left: 10px;
   }
 
   .navbar {
