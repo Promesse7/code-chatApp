@@ -129,7 +129,7 @@
     
 
     @media (min-width: 768px) {
-        .login {
+        .register {
           flex-direction: row;
           padding: 50px;
         }
@@ -149,3 +149,25 @@
         
       }
     }
+
+    @media (min-width: 480px) {
+        .register {
+          flex-direction: row;
+          padding: 50px;
+        }
+      
+        .item form {
+          width: 500px;
+        }
+      
+        .sep {
+          display: none;
+        }
+      
+        .attract {
+          display: none;
+        }
+      
+        
+      }
+    
