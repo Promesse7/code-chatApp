@@ -16,7 +16,6 @@
 .hero .left-view {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   width: 120vw;
   margin-left: 8em;
 }
@@ -196,6 +195,16 @@
   object-fit: cover;
   border-radius: 10px;
   translate: 100px 0 10px;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: rgb(171, 59, 45);
+  padding: 20px; /* Add padding to ensure spacing */
+  box-sizing: border-box;
+  margin-top: 100px;
 }
 
 /* Responsive MainView Styles */
@@ -437,4 +446,5 @@
     width: 100px;
     height: 100px;
   }
+
 }

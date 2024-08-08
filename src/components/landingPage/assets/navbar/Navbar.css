@@ -16,8 +16,8 @@ span.logo {
 
 span.logo img {
   margin-left: 1.3vw;
-  width: 100px;
-  height: 80px;
+  width: 130px;
+  height: 100px;
   object-fit: contain;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
@@ -141,8 +141,8 @@ span.logo img {
 
   span.logo img {
     margin-left: 0.1vw;
-    width: 40px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
   }
 
   .navItems .navButton {
@@ -163,8 +163,8 @@ span.logo img {
 
   span.logo img {
     margin-left: 0.1vw;
-    width: 30px;
-    height: 20px;
+    width: 50px;
+    height: 35px;
   }
 
   .navItems {
@@ -190,8 +190,8 @@ span.logo img {
 
   span.logo img {
     margin-left: 0.1vw;
-    width: 35px;
-    height: 25px;
+    width: 45px;
+    height: 35px;
   }
 
   .navItems {
@@ -217,8 +217,8 @@ span.logo img {
 
   span.logo img {
     margin-left: 0.1vw;
-    width: 32px;
-    height: 22px;
+    width: 42px;
+    height: 32px;
   }
 
   .navItems {
@@ -244,8 +244,8 @@ span.logo img {
 
   span.logo img {
     margin-left: 0.05vw;
-    width: 28px;
-    height: 18px;
+    width: 38px;
+    height: 28px;
   }
 
   .navItems {
