@@ -429,6 +429,9 @@
     margin: 0;
     translate: 0 0 0;
   }
+  .testimonial-card.three,.testimonial-card.two{
+    display: none;
+  }
 
   .hero .user-avatar {
     width: 30px;
@@ -443,8 +446,8 @@
     font-size: 8px;
   }
   .hero-image{
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 4px;
   }
 
 }
