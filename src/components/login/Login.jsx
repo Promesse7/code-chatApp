@@ -9,6 +9,7 @@ import { auth, db } from "../lib/firebase.js";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useChatStore } from "../lib/chatStore .js";
 
+
 const Login = ({ onLoginSuccess }) => {
     const [avatar, setAvatar] = useState({ file: null, url: "" });
     const [loading, setLoading] = useState(false);
@@ -38,7 +39,7 @@ const Login = ({ onLoginSuccess }) => {
             const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
             if (userDoc.exists()) {
                 setCurrentUser(userDoc.data());
-                onLoginSuccess(); // Call this when login is successful
+                onLoginSuccess(); 
             }
         } catch (err) {
             console.log(err);
@@ -84,7 +85,7 @@ const Login = ({ onLoginSuccess }) => {
 
             setCurrentUser(userData);
             toast.success("Account created! You are now logged in.");
-            onLoginSuccess(); // Call this when registration is successful
+            onLoginSuccess(); 
         } catch (err) {
             console.log(err);
             toast.error(err.message);
@@ -104,6 +105,7 @@ const Login = ({ onLoginSuccess }) => {
                     <button disabled={loading}>{loading ? "Loading..." : "Sign In"}</button>
                 </form>
             </div>
+
             <div className="separator"></div>
             <div className="item">
                 <h2>Create an account!</h2>
