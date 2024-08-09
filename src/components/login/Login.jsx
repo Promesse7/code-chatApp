@@ -1,17 +1,10 @@
-import "./login.css";
-import profile from "./rp.png";
-import Upload from "../lib/upload.js";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import React, { useState, useEffect } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../lib/firebase.js";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useChatStore } from "../lib/chatStore .js";
 
-
-const Login = ({ onLoginSuccess }) => {
-    const [avatar, setAvatar] = useState({ file: null, url: "" });
+const Login = ({ onLoginSuccess, onSwitchToRegister }) => {
     const [loading, setLoading] = useState(false);
     const { setCurrentUser, initializeAuth } = useChatStore();
 
@@ -20,14 +13,7 @@ const Login = ({ onLoginSuccess }) => {
         return () => unsubscribe();
     }, [initializeAuth]);
 
-    const handleAvatar = e => {
-        if (e.target.files[0]) {
-            setAvatar({
-                file: e.target.files[0],
-                url: URL.createObjectURL(e.target.files[0])
-            });
-        }
-    };
+    
 
     const handleLogin = async e => {
         e.preventDefault();
@@ -39,7 +25,7 @@ const Login = ({ onLoginSuccess }) => {
             const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
             if (userDoc.exists()) {
                 setCurrentUser(userDoc.data());
-                onLoginSuccess(); 
+                onLoginSuccess(); // Call this when login is successful
             }
         } catch (err) {
             console.log(err);
@@ -85,7 +71,7 @@ const Login = ({ onLoginSuccess }) => {
 
             setCurrentUser(userData);
             toast.success("Account created! You are now logged in.");
-            onLoginSuccess(); 
+            onLoginSuccess(); // Call this when registration is successful
         } catch (err) {
             console.log(err);
             toast.error(err.message);
@@ -97,15 +83,16 @@ const Login = ({ onLoginSuccess }) => {
     return (
         <div className="login">
             <div className="item">
-                <h2>Welcome back!</h2>
-
                 <form action="" onSubmit={handleLogin}>
+                <h2>Welcome back!</h2>
                     <input type="text" placeholder="Email" name="email" required />
                     <input type="password" placeholder="Password" name="password" required />
                     <button disabled={loading}>{loading ? "Loading..." : "Sign In"}</button>
-                </form>
-            </div>
 
+                    <button className="switch" onClick={onSwitchToRegister}>Don't have an account? Register here</button>
+                </form>
+                
+            </div>
             <div className="separator"></div>
             <div className="item">
                 <h2>Create an account!</h2>

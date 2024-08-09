@@ -67,9 +67,10 @@ const MainVew = ({ onGetStarted }) => {
                                         </div>
                               </div>
                         </div>
+                              
         </div>
    
     )
 }
 
-export default MainVew 
+export default MainVew  
