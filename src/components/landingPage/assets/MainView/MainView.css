@@ -147,19 +147,7 @@
   height: 60px;
 }
 
-.hero .testimonial-card.two {
-  translate: -460px 100px 10px;
-  width: 200px;
-}
 
-.hero .testimonial-card.three {
-  translate: -250px 100px 10px;
-  width: 200px;
-}
-
-.hero .testimonial-card.one {
-  translate: -200px -150px 10px;
-}
 
 .hero .user-avatar {
   width: 40px;
@@ -467,4 +455,17 @@
     margin-top: 2px;
   }
 
+}
+
+
+.two {
+  translate: -460px 100px 10px;
+}
+
+.three {
+  translate: -250px 100px 10px;
+}
+
+.one {
+  translate: -200px -150px 10px;
 }
