@@ -19,15 +19,15 @@ body {
 }
 
 .container {
-  height: 90vh;
-  width: 90vw;
   background-color: rgb(133, 48, 36);
   border-radius: 12px;
   backdrop-filter: blur(18px), saturate(180%);
   border: none;
-  display: flex;
   box-shadow: 5px 10px 10px 10px gray;
-  flex-direction: column; 
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -239,10 +239,3 @@ body {
 
 /* Responsiveness */
 
-@media (max-width: 480px) {
-  .container{
-    width: 95vw;
-    height: 95vh;
-    overflow: hidden;
-  }
-}

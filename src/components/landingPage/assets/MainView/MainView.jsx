@@ -4,7 +4,7 @@ import user from "./images.jpeg";
 
 const MainVew = ({ onGetStarted }) => {
   return (
-    <div className="h-[77.5vh] w-[90vw] flex items-center justify-center pl-[4em] rounded-b-[10px] bg-white overflow-hidden pt-[20px] box-border">
+    <div className="h-[77.5vh] w-[90vw] flex items-center justify-center pl-[4em] rounded-b-[10px] bg-white overflow-hidden pt-[20px] box-border ">
       <div className="flex flex-col w-[120vw] ml-[4em] ">
         <h1 className="text-[40px] font-semibold mb-[20px] capitalize text-[#AB3B2D]">
           Start Chatting Anywhere Anytime With Talkie!
