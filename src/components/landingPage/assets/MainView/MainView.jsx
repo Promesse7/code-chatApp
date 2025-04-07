@@ -4,76 +4,76 @@ import userAvatar from './images.jpeg'; // Ensure this path is correct
 
 const MainView = ({ onGetStarted }) => {
   return (
-    <div className="h-[77.5vh] w-[90vw] flex items-center justify-center pl-8 md:pl-16 lg:pl-32 rounded-b-lg bg-white overflow-hidden pt-5 box-border">
-      <div className="flex flex-col lg:flex-row w-full">
-        <div className="flex flex-col w-full lg:w-[120vw] ml-0 lg:ml-32 pl-0 lg:pl-[4vw]">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-5 capitalize text-[rgb(171,59,45)]">
-            Start Chatting Anywhere Anytime With Talkie!
+    <div className="h-[60vh] overflow-hidden w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50 overflow-hidden py-2 px-4 sm:px-2 md:px-16 lg:px-32 box-border">
+      <div className="flex flex-col lg:flex-row items-center justify-between h-[90vh] w-full max-w-7xl ">
+        {/* Left Section: Text, Button, and Stats */}
+        <div className="flex flex-col w-full lg:w-1/2 space-y-2 text-center lg:text-left">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[rgb(171,59,45)] leading-tight">
+            Start Chatting Anywhere, Anytime with Talkie!
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-normal mb-5 text-[rgb(151,42,27)]">
-            Great software application that allows you to chat from any place at any time without any interruption.
+          <p className="text-base sm:text-lg md:text-xl text-[rgb(151,42,27)] font-light">
+            A seamless chatting app that connects you from any place, at any time, without interruptions.
           </p>
           <button
             onClick={onGetStarted}
-            className="mt-2 mb-2 py-2 px-4 bg-[rgb(171,59,45)] text-white rounded-lg border-none cursor-pointer h-12 text-base sm:text-lg font-semibold w-40 sm:w-48 lg:w-52"
+            className="mt-4 py-3 px-6 bg-[rgb(171,59,45)] text-white rounded-lg shadow-md hover:bg-[rgb(151,42,27)] transition-colors duration-300 text-lg font-semibold w-48 mx-auto lg:mx-0"
           >
             Get Started
           </button>
-          
-          <div className="text-[rgb(151,42,27)] flex items-center font-sans">
-            <div className="flex mr-2 h-20 w-auto overflow-hidden p-2">
-              {[1, 2, 3, 4].map((index) => (
-                <img
-                  key={index}
-                  src={userAvatar}
-                  alt={`User ${index}`}
-                  className="w-12 h-12 rounded-full border-4 border-white -mr-5 object-cover shadow-md"
-                />
-              ))}
-            </div>
-            
-            <div className="p-0 gap-5 text-[rgb(151,42,27)] flex">
-              <div className="flex flex-col">
-                <p className="text-[rgb(151,42,27)] font-bold text-xl -ml-10">3933</p>
-                <p className="text-[rgb(151,42,27)] text-sm font-normal -mt-4">Happy Customers</p>
+
+          {/* Customer Stats */}
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-[rgb(151,42,27)] mt-6">
+            <div className="flex items-center gap-2">
+              <div className="flex -space-x-4">
+                {[1, 2, 3, 4].map((index) => (
+                  <img
+                    key={index}
+                    src={userAvatar}
+                    alt={`User ${index}`}
+                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
+                  />
+                ))}
               </div>
-              
-              <div className="text-[rgb(151,42,27)] text-sm flex flex-col items-center">
-                <span className="text-[rgb(151,42,27)] font-bold text-xl mr-1">4.9/5</span>
-                <div className="text-yellow-400 text-sm ml-1">
-                  ★★★★★ <span className="text-[rgb(151,42,27)]">Rating</span>
-                </div>
+              <div>
+                <p className="text-xl font-bold">3,933</p>
+                <p className="text-sm">Happy Customers</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-xl font-bold">4.9/5</span>
+              <div className="flex items-center text-yellow-400 text-sm">
+                ★★★★★ <span className="text-[rgb(151,42,27)] ml-1">Rating</span>
               </div>
             </div>
           </div>
         </div>
-        
-        <div className="flex justify-center items-center flex-col gap-2 mt-8 mb-8 w-full lg:w-auto h-full relative">
+
+        {/* Right Section: Logo and Testimonials */}
+        <div className="relative flex flex-col items-center w-full lg:w-1/2 py-4">
           <img
             src={logo}
             alt="Talkie Logo"
-            className="w-full h-full object-cover rounded-lg translate-x-0 lg:translate-x-24"
+            className="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300 mb-8"
           />
-          
-          <TestimonialCard 
-            name="Elon Musk" 
-            text="One of the best chatting apps ever." 
+
+          {/* Testimonial Cards */}
+          <TestimonialCard
+            name="Elon Musk"
+            text="One of the best chatting apps ever."
             avatar={userAvatar}
-            className="absolute -translate-x-52 -translate-y-40 hidden md:flex"
+            className="absolute top-0 left-0 sm:-left-20 lg:left-32 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
           />
-          
-          <TestimonialCard 
-            name="Bill Gates" 
-            text="The best chatting app." 
+          <TestimonialCard
+            name="Bill Gates"
+            text="The best chatting app."
             avatar={userAvatar}
-            className="absolute -translate-x-[460px] translate-y-24 hidden md:flex"
+            className="absolute bottom-0 left-0 sm:-left-16 lg:-left-8 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
           />
-          
-          <TestimonialCard 
-            name="H. JD" 
-            text="Talkie is the best!" 
+          <TestimonialCard
+            name="H. JD"
+            text="Talkie is the best!"
             avatar={userAvatar}
-            className="absolute -translate-x-[250px] translate-y-24 hidden md:flex"
+            className="absolute bottom-0 right-0 sm:-right-16 lg:-right-4 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
           />
         </div>
       </div>
@@ -81,21 +81,18 @@ const MainView = ({ onGetStarted }) => {
   );
 };
 
+// TestimonialCard Component
 const TestimonialCard = ({ name, text, avatar, className }) => {
   return (
-    <div className={`flex items-center bg-white rounded-lg p-3 shadow-md w-72 h-14 ${className}`}>
-      <img 
-        src={avatar} 
-        alt={`${name}'s avatar`} 
-        className="w-10 h-10 rounded-full object-cover mr-3"
+    <div className={`flex items-center gap-3 max-w-xs ${className}`}>
+      <img
+        src={avatar}
+        alt={`${name}'s avatar`}
+        className="w-10 h-10 rounded-full object-cover border-2 border-indigo-500"
       />
-      <div className="flex-grow">
-        <h3 className="font-sans text-sm font-bold m-0 mb-1 text-black">
-          {name}
-        </h3>
-        <p className="font-sans text-xs text-gray-500 m-0 w-full break-normal">
-          {text}
-        </p>
+      <div>
+        <h3 className="text-base font-semibold text-gray-800">{name}</h3>
+        <p className="text-xs text-gray-600 italic">"{text}"</p>
       </div>
     </div>
   );
