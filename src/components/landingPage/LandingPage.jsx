@@ -5,7 +5,7 @@ import MainView from './assets/MainView/MainView';
 
 const LandingPage = ({ onGetStarted }) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-white m-0 p-0">
+    <div className="flex flex-col items-center justify-center min-h-screen text-white m-0 p-0 overflow-hidden">
       <Navbar onGetStarted={onGetStarted} />
       <MainView onGetStarted={onGetStarted} />
     </div>

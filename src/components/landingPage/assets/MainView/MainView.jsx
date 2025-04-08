@@ -4,7 +4,7 @@ import userAvatar from './images.jpeg'; // Ensure this path is correct
 
 const MainView = ({ onGetStarted }) => {
   return (
-    <div className="h-[60vh] overflow-hidden w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50 overflow-hidden py-2 px-4 sm:px-2 md:px-16 lg:px-32 box-border">
+    <div className="h-[90vh] overflow-hidden w-full max-h-screen flex items-center justify-center bg-gradient-to-br  overflow-hidden py-2 px-4 sm:px-2 md:px-16 lg:px-32 box-border">
       <div className="flex flex-col lg:flex-row items-center justify-between h-[90vh] w-full max-w-7xl ">
         {/* Left Section: Text, Button, and Stats */}
         <div className="flex flex-col w-full lg:w-1/2 space-y-2 text-center lg:text-left">
@@ -61,13 +61,13 @@ const MainView = ({ onGetStarted }) => {
             name="Elon Musk"
             text="One of the best chatting apps ever."
             avatar={userAvatar}
-            className="absolute top-0 left-0 sm:-left-20 lg:left-32 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
+            className="absolute top-0 left-0 sm:-left-20 lg:left-36 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
           />
           <TestimonialCard
             name="Bill Gates"
             text="The best chatting app."
             avatar={userAvatar}
-            className="absolute bottom-0 left-0 sm:-left-16 lg:-left-8 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
+            className="absolute bottom-0 left-0 sm:-left-16 hidden md:flex bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 max-w-xs"
           />
           <TestimonialCard
             name="H. JD"

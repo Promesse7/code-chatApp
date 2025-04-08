@@ -19,7 +19,8 @@ body {
 }
 
 .container {
-  background-color: rgb(133, 48, 36);
+  overflow: hidden;
+  background-color: #fff;
   border-radius: 12px;
   backdrop-filter: blur(18px), saturate(180%);
   border: none;

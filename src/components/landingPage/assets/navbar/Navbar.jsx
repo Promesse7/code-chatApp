@@ -3,7 +3,7 @@ import logo from "./logo.png";
 
 const Navbar = ({ onRegisterSuccess, onLoginSuccess }) => {
   return (
-    <nav className="h-[60px] w-[90vw] bg-white flex items-center justify-between py-[50px] px-[50px] md:px-10 sm:px-8 xs:px-4 rounded-t-lg shadow-md">
+    <nav className="h-[60px] w-[90vw] bg-white flex items-center justify-between py-[50px] px-[50px] md:px-10 sm:px-8 xs:px-4 rounded-t-lg ">
       <div className="flex items-center justify-between w-full h-full pr-[3vw] md:pr-2 sm:pr-1">
         <span className="flex items-center justify-center">
           <img
